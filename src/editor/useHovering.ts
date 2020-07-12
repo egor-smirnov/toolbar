@@ -3,7 +3,7 @@ import { ReferenceObject } from "popper.js";
 import { ReactEditor, useSlate } from "slate-react";
 import { Editor, Range } from "slate";
 
-const useHovering = () => {
+const useHovering = (linkState: string | null) => {
   const editor = useSlate();
 
   const [open, setOpen] = useState<boolean>(false);
@@ -14,12 +14,16 @@ const useHovering = () => {
       const { selection } = editor;
 
       if (
-        !selection ||
-        !ReactEditor.isFocused(editor) ||
-        Range.isCollapsed(selection) ||
-        Editor.string(editor, selection) === ""
+        linkState === null &&
+        (!selection ||
+          !ReactEditor.isFocused(editor) ||
+          Range.isCollapsed(selection) ||
+          Editor.string(editor, selection) === "")
       ) {
         setOpen(false);
+        return;
+      } else if (typeof linkState === "string") {
+        // dont close the popper when editing link
         return;
       }
 
@@ -44,11 +48,11 @@ const useHovering = () => {
         });
       }
     };
-    document.addEventListener('selectionchange', handler);
+    document.addEventListener("selectionchange", handler);
     return () => {
-      document.removeEventListener('selectionchange', handler);
+      document.removeEventListener("selectionchange", handler);
     };
-  }, []);
+  }, [linkState]);
 
   return {
     anchorEl,

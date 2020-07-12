@@ -15,7 +15,7 @@ export function Toolbar() {
   const s = useStyles();
   const editor = useSlate();
 
-  const { open: popperOpen, anchorEl: popperAnchorEl } = useHovering();
+  const { open: popperOpen, anchorEl: popperAnchorEl } = useHovering(link);
 
   return (
     <Popper className={s.root} open={popperOpen} anchorEl={popperAnchorEl}>
