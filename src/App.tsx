@@ -7,28 +7,28 @@ import {
   CardContent,
   Typography,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
 import theme from "./theme";
 import { Editor, Node } from "./editor";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    paddingTop: theme.spacing(10),
-    paddingBottom: theme.spacing(4),
-  },
-  title: {
-    margin: theme.spacing(0, 2, 2),
-  },
-  card: {
-    marginBottom: theme.spacing(2),
-  },
-}));
+import { useStyles } from "./App.styles";
 
 const initialValue: Node[] = [
   {
     type: "paragraph",
-    children: [{ text: "" }],
+    children: [
+      { text: "Regular paragraph with " },
+      { text: "some bold text ", bold: true },
+      { text: "and " },
+      { text: "some italic text ", italic: true },
+      { text: "and " },
+      { text: "some underline text", underline: true },
+      { text: " and " },
+      {
+        type: "link",
+        url: "https://www.google.com/",
+        children: [{ text: "some link" }],
+      },
+    ],
   },
 ];
 
@@ -47,10 +47,10 @@ export function App() {
           <CardContent>
             <Editor
               value={value}
-              onChange={x => setValue(x)}
+              onChange={(x) => setValue(x)}
               placeholder="Write text here..."
               autoFocus
-              spellCheck
+              spellCheck={false}
             />
           </CardContent>
         </Card>

@@ -12,16 +12,18 @@
   "dependencies": {
     "@material-ui/core": "4.10.2",
     "@material-ui/icons": "4.9.1",
+    "clsx": "1.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "slate": "0.58.3",
+    "slate-history": "^0.58.4",
     "slate-react": "0.58.3",
-    "typescript": "^3.9.6"
+    "typescript": "3.9.6"
   },
   "devDependencies": {
-    "@types/react-dom": "^16.9.8",
-    "prettier": "^2.0.5",
-    "react-scripts": "^3.1.2"
+    "@types/react-dom": "16.9.8",
+    "prettier": "2.0.5",
+    "react-scripts": "3.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

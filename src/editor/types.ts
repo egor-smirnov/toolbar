@@ -1,5 +1,9 @@
-export enum FORMATS {
-  BOLD,
-  ITALIC,
-  UNDERLINE,
+export enum EditorLeafFormat {
+  bold = "bold",
+  italic = "italic",
+  underline = "underline",
+}
+
+export enum EditorElementFormat {
+  link = "link",
 }
